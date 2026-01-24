@@ -1,35 +1,38 @@
 
 import { LeadData } from "../types";
+import { supabase } from "./supabaseClient";
 
-export const submitToDatabase = async (leadData: LeadData): Promise<boolean> => {
-  console.log("Submitting to Database (Airtable/Supabase Mock):", leadData);
-  
-  // Example for Airtable (User would replace this):
-  /*
-  const response = await fetch('https://api.airtable.com/v0/YOUR_BASE_ID/Leads', {
-    method: 'POST',
-    headers: {
-      'Authorization': 'Bearer YOUR_TOKEN',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      fields: {
-        "Name": leadData.name,
-        "Email": leadData.email,
-        "Business": leadData.businessName,
-        "Score": leadData.auditResult.readinessPercentage,
-        "Level": leadData.auditResult.level,
-        "RawData": JSON.stringify(leadData.responses)
-      }
-    })
-  });
-  return response.ok;
-  */
+export const submitToDatabase = async (leadData: LeadData, aiReport?: string): Promise<boolean> => {
+  try {
+    // Create a 5-second timeout promise
+    const timeoutPromise = new Promise<{ error: any }>((_, reject) => {
+      setTimeout(() => reject(new Error('Request timed out')), 5000);
+    });
 
-  // Simulating a successful network request
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(true);
-    }, 1500);
-  });
+    // Race between Supabase insert and timeout
+    const { error } = await Promise.race([
+      supabase.from('audit_leads').insert([
+        {
+          name: leadData.name,
+          email: leadData.email,
+          business_name: leadData.businessName,
+          responses: leadData.responses,
+          audit_result: leadData.auditResult,
+          ai_report: aiReport || null,
+        },
+      ]),
+      timeoutPromise
+    ]) as { error: any };
+
+    if (error) {
+      console.error('Error submitting to Supabase:', error);
+      return false;
+    }
+
+    return true;
+  } catch (err) {
+    console.error('Unexpected error submitting to Supabase:', err);
+    // Return true anyway so the user flow isn't blocked by analytics failure
+    return true;
+  }
 };

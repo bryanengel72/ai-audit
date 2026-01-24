@@ -7,7 +7,7 @@ export enum Pillar {
   TOOLS = 'Tools & Security'
 }
 
-export type QuestionType = 'scored' | 'text';
+export type QuestionType = 'scored' | 'text' | 'multiselect' | 'select';
 
 export interface QuestionOption {
   text: string;
@@ -21,11 +21,13 @@ export interface Question {
   question: string;
   options?: QuestionOption[];
   placeholder?: string;
+  maxSelect?: number;
 }
 
 export interface UserResponse {
   questionId: string;
   selectedOption?: QuestionOption;
+  selectedOptions?: QuestionOption[];
   textResponse?: string;
 }
 

@@ -1,18 +1,21 @@
-
 import React, { useState } from 'react';
-import { QUESTIONS } from './constants';
+import { QUESTIONS, CAL_COM_LINK } from './constants';
 import { UserResponse, LeadData, AuditResult } from './types';
 import LandingPage from './components/LandingPage';
 import AuditForm from './components/AuditForm';
-import ResultsDashboard from './components/ResultsDashboard';
+import BookingScreen from './components/BookingScreen';
+import ProcessingView from './components/ProcessingView';
+import { submitToDatabase } from './services/storageService';
 
-type AppState = 'landing' | 'form' | 'results';
+type AppState = 'landing' | 'form' | 'processing' | 'booking';
+
+import { DEMO_LEAD_DATA } from './demoData';
 
 const App: React.FC = () => {
   const [state, setState] = useState<AppState>('landing');
   const [leadInfo, setLeadInfo] = useState({ name: '', email: '', businessName: '' });
-  const [responses, setResponses] = useState<UserResponse[]>([]);
   const [auditResult, setAuditResult] = useState<AuditResult | null>(null);
+  const [finalLeadData, setFinalLeadData] = useState<LeadData | null>(null);
 
   const calculateResult = (userResponses: UserResponse[]): AuditResult => {
     // Only calculate score for 'scored' type questions
@@ -58,11 +61,27 @@ const App: React.FC = () => {
     setState('form');
   };
 
-  const handleFormComplete = (finalResponses: UserResponse[]) => {
+  const handleFormComplete = async (finalResponses: UserResponse[]) => {
+    setState('processing');
     const result = calculateResult(finalResponses);
-    setResponses(finalResponses);
     setAuditResult(result);
-    setState('results');
+
+    // Prepare lead data
+    const completeLeadData: LeadData = {
+      name: leadInfo.name,
+      email: leadInfo.email,
+      businessName: leadInfo.businessName,
+      responses: finalResponses,
+      auditResult: result
+    };
+
+    setFinalLeadData(completeLeadData);
+
+    // 1. Submit to Supabase (fire and forget / robust handling inside service)
+    await submitToDatabase(completeLeadData);
+
+    // 2. Transition to Booking Screen instead of Redirecting
+    setState('booking');
   };
 
   return (
@@ -91,22 +110,15 @@ const App: React.FC = () => {
             onComplete={handleFormComplete}
           />
         )}
-        {state === 'results' && auditResult && (
-          <ResultsDashboard
-            leadData={{
-              name: leadInfo.name,
-              email: leadInfo.email,
-              businessName: leadInfo.businessName,
-              responses,
-              auditResult
-            }}
-          />
+        {state === 'processing' && <ProcessingView />}
+        {state === 'booking' && finalLeadData && (
+          <BookingScreen leadData={finalLeadData} />
         )}
       </main>
 
-      <footer className="bg-white py-12 border-t border-gray-100">
+      <footer className="bg-slate-900 py-12 border-t border-white/5 relative z-10">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <p className="text-gray-400 text-sm">© 2026 AI Readiness Audit. All rights reserved.</p>
+          <p className="text-slate-600 text-sm">© 2026 AI Readiness Protocol. All rights reserved.</p>
         </div>
       </footer>
     </div>

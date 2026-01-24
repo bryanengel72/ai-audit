@@ -19,9 +19,21 @@ export const QUESTIONS: Question[] = [
   {
     id: 'q3',
     pillar: Pillar.STRATEGY,
-    type: 'text',
-    question: "What are your top 2–3 business goals for the next 12 months?",
-    placeholder: "e.g., Double revenue, hire 3 new staff, automate onboarding..."
+    type: 'multiselect',
+    question: "Top 2–3 goals for the next 12 months (select up to 3)",
+    maxSelect: 3,
+    options: [
+      { text: "Increase average order value / ticket size", score: 0 },
+      { text: "More qualified leads", score: 0 },
+      { text: "More booked calls/appointments", score: 0 },
+      { text: "Increase close rate / conversions", score: 0 },
+      { text: "Improve retention / repeat business", score: 0 },
+      { text: "Reduce no-shows", score: 0 },
+      { text: "Save time / reduce admin load", score: 0 },
+      { text: "Improve customer experience", score: 0 },
+      { text: "Better reporting / visibility", score: 0 },
+      { text: "Improve team efficiency / delivery speed", score: 0 }
+    ]
   },
   {
     id: 'q4',
@@ -53,27 +65,32 @@ export const QUESTIONS: Question[] = [
   {
     id: 'q7',
     pillar: Pillar.TOOLS,
-    type: 'scored',
-    question: "What's the status of your current tech stack (CRM, Booking, Email, PM)?",
+    type: 'multiselect',
+    question: "What tools are you using today? (select all that apply)",
     options: [
-      { text: "Disconnected tools or no core systems", score: 1 },
-      { text: "A few tools but they don't talk to each other", score: 2 },
-      { text: "Core tools in place but data is messy", score: 3 },
-      { text: "Tools are mostly integrated and working well", score: 4 },
-      { text: "Fully integrated, streamlined 'Source of Truth'", score: 5 }
+      { text: "CRM", score: 0 },
+      { text: "Scheduling/booking", score: 0 },
+      { text: "Email marketing", score: 0 },
+      { text: "SMS/texting platform", score: 0 },
+      { text: "Website forms", score: 0 },
+      { text: "Invoicing/payments", score: 0 },
+      { text: "Google Sheets / spreadsheets", score: 0 },
+      { text: "Project management", score: 0 },
+      { text: "Customer support/helpdesk", score: 0 }
     ]
   },
   {
     id: 'q8',
     pillar: Pillar.DATA,
-    type: 'scored',
+    type: 'select',
     question: "Where does your customer/client data mainly live right now?",
     options: [
-      { text: "Inbox, DMs, or physical paper", score: 1 },
-      { text: "Multiple random spreadsheets", score: 2 },
-      { text: "Scattered across several software tools", score: 3 },
-      { text: "Mainly centralized in one CRM", score: 4 },
-      { text: "Clean, centralized, and synced CRM", score: 5 }
+      { text: "Inbox/DMs (email, Instagram, etc.)", score: 1 },
+      { text: "Spreadsheets (Google Sheets/Excel)", score: 2 },
+      { text: "Paper/notes", score: 1 },
+      { text: "Multiple places (not centralized)", score: 2 },
+      { text: "A few notes, scattered docs", score: 2 },
+      { text: "Centralized CRM (HubSpot, Salesforce, etc.)", score: 5 }
     ]
   },
   {
@@ -105,14 +122,13 @@ export const QUESTIONS: Question[] = [
   {
     id: 'q11',
     pillar: Pillar.PEOPLE,
-    type: 'scored',
-    question: "How comfortable is your team with adopting new tools?",
+    type: 'select',
+    question: "Who’s involved day-to-day, and how comfortable are they with new tools?",
     options: [
-      { text: "High resistance to any technology change", score: 1 },
-      { text: "Skeptical, takes a long time to adapt", score: 2 },
-      { text: "Mixed, depends on the tool", score: 3 },
-      { text: "Generally open and willing to learn", score: 4 },
-      { text: "Tech-forward, actively seeking new tools", score: 5 }
+      { text: "Solo (just me)", score: 5 },
+      { text: "Team, mostly comfortable with tools", score: 4 },
+      { text: "Team, mixed comfort", score: 3 },
+      { text: "Team is mostly resistant to new tools", score: 2 }
     ]
   },
   {
@@ -151,9 +167,13 @@ export const QUESTIONS: Question[] = [
   {
     id: 'q15',
     pillar: Pillar.STRATEGY,
-    type: 'text',
+    type: 'scored',
     question: "Do you prefer starting with one high-impact pilot, or a broader systems upgrade?",
-    placeholder: "e.g., Let's fix the lead follow-up first vs. Revamp everything..."
+    options: [
+      { text: "One high-impact workflow pilot first", score: 4 },
+      { text: "Broader systems upgrade (multiple workflows)", score: 5 },
+      { text: "Not sure—recommend what's best", score: 3 }
+    ]
   }
 ];
 
