@@ -306,13 +306,13 @@ const BookingScreen: React.FC<Props> = ({ leadData }) => {
                 <div className="absolute bottom-[-10%] right-[10%] w-[500px] h-[500px] bg-brand-primary/10 rounded-full blur-[120px]" />
             </div>
 
-            <div className="w-full max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 p-6 lg:p-12 h-[calc(100vh-80px)]">
+            <div className="w-full max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 p-6 lg:p-12 lg:h-[calc(100vh-80px)] h-auto">
 
-                {/* Left Results Column - Scrollable */}
+                {/* Left Results Column - Scrollable on Desktop, Natural on Mobile */}
                 <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    className="overflow-y-auto pr-4 scrollbar-thin scrollbar-thumb-brand-gray/50 scrollbar-track-transparent"
+                    className="lg:overflow-y-auto lg:pr-4 scrollbar-thin scrollbar-thumb-brand-gray/50 scrollbar-track-transparent h-auto"
                 >
                     <div className="space-y-8 pb-12">
                         {/* Score Card */}
@@ -463,15 +463,15 @@ const BookingScreen: React.FC<Props> = ({ leadData }) => {
                     </div>
                 </motion.div>
 
-                {/* Right Calendar Column - Sticky/Fixed */}
+                {/* Right Calendar Column - Sticky/Fixed on Desktop */}
                 <motion.div
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.2 }}
-                    className="h-full flex flex-col"
+                    className="h-[600px] lg:h-full flex flex-col pb-12 lg:pb-0"
                 >
                     <div className="mb-4 flex items-center justify-between">
-                        <h3 className="text-xl font-bold text-white flex items-center gap-2">
+                        <h3 className="text-xl font-bold font-heading text-white flex items-center gap-2">
                             <span className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-sm">📅</span>
                             Schedule Your Strategy Session
                         </h3>

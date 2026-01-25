@@ -132,14 +132,14 @@ const AuditForm: React.FC<Props> = ({ userName, onComplete }) => {
   };
 
   return (
-    <div className="min-h-[calc(100vh-80px)] flex items-center justify-center p-4 bg-slate-900 relative overflow-hidden">
+    <div className="min-h-[calc(100vh-80px)] flex items-center justify-center p-4 lg:p-8 bg-brand-dark relative overflow-hidden">
       {/* Abstract Background Blobs */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute top-[-10%] right-[10%] w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[120px] animate-pulse" />
-        <div className="absolute bottom-[-10%] left-[10%] w-[600px] h-[600px] bg-indigo-600/10 rounded-full blur-[120px]" />
+        <div className="absolute top-[-10%] right-[10%] w-[500px] h-[500px] bg-brand-primary/20 rounded-full blur-[120px] animate-pulse" />
+        <div className="absolute bottom-[-10%] left-[10%] w-[600px] h-[600px] bg-brand-calm/10 rounded-full blur-[120px]" />
       </div>
 
-      <div className="w-full max-w-6xl grid lg:grid-cols-2 gap-16 relative z-10 items-center">
+      <div className="w-full max-w-6xl grid lg:grid-cols-2 gap-8 lg:gap-16 relative z-10 items-center">
 
         {/* Left Col: Static Content Info */}
         <div className="hidden lg:flex flex-col justify-center text-white pl-8">
@@ -199,7 +199,7 @@ const AuditForm: React.FC<Props> = ({ userName, onComplete }) => {
               initial="enter"
               animate="center"
               exit="exit"
-              className="bg-slate-800/40 backdrop-blur-2xl border border-white/10 p-8 md:p-12 rounded-[2.5rem] shadow-2xl relative overflow-hidden"
+              className="bg-brand-dark/40 backdrop-blur-2xl border border-white/10 p-6 md:p-12 rounded-[2rem] md:rounded-[2.5rem] shadow-2xl relative overflow-hidden"
             >
               {/* Internal subtle glow */}
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-1 bg-gradient-to-r from-transparent via-blue-400/30 to-transparent blur-sm" />

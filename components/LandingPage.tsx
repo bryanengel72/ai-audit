@@ -69,10 +69,10 @@ const LandingPage: React.FC<Props> = ({ onStart }) => {
 
           <motion.h1
             variants={itemVariants}
-            className="text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.1]"
+            className="text-5xl md:text-6xl lg:text-7xl font-extrabold font-heading text-white tracking-tight leading-[1.1]"
           >
             Future-Proof <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-white">Your Business.</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-calm via-white to-brand-sky">Your Business.</span>
           </motion.h1>
 
           <motion.p
@@ -102,7 +102,7 @@ const LandingPage: React.FC<Props> = ({ onStart }) => {
         {/* Right Column: Glass Form */}
         <motion.div
           variants={itemVariants}
-          className="bg-slate-800/40 backdrop-blur-2xl border border-white/10 p-8 md:p-10 rounded-[2.5rem] shadow-2xl shadow-black/20 relative group"
+          className="bg-brand-dark/40 backdrop-blur-2xl border border-white/10 p-6 md:p-10 rounded-[2.5rem] shadow-2xl shadow-black/20 relative group"
         >
           <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent rounded-[2.5rem] pointer-events-none" />
 
