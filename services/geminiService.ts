@@ -55,26 +55,6 @@ This report provides the high-level architecture. To execute this, we need to ma
   const ai = new GoogleGenAI({ apiKey });
 
   const prompt = `
-    You are an expert AI Automation Strategist. I have a potential client who just completed a deep 15-question discovery audit for their 2026 AI Readiness.
-    
-    Client Context:
-    - Name: ${leadData.name}
-    - Business: ${leadData.businessName}
-    
-    Discovery Insight (Qualitative):
-    ${leadData.responses.map(r => {
-    if (r.textResponse) return `- QID ${r.questionId}: ${r.textResponse}`;
-    return "";
-  }).filter(Boolean).join('\n')}
-    
-    Technical Readiness Summary (Quantitative):
-    - Overall Score: ${leadData.auditResult.readinessPercentage}%
-    - Category Scores: ${Object.entries(leadData.auditResult.pillarScores).map(([p, s]) => `${p}: ${s}/5`).join(', ')}
-    
-    Objective: Create a highly personalized, executive-level analysis.
-    
-    CRITICAL FORMATTING RULES:
-    1. Use ONLY ### for headers. No # or ##.
     2. Use bullet points for recommendations.
     3. Keep paragraphs short (2-3 sentences max).
     4. Focus on the "Gap" between where they are now and "Autonomous Operations".

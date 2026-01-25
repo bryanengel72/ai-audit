@@ -300,10 +300,10 @@ const BookingScreen: React.FC<Props> = ({ leadData }) => {
     };
 
     return (
-        <div className="min-h-[calc(100vh-80px)] flex bg-slate-900 relative overflow-hidden">
+        <div className="min-h-[calc(100vh-80px)] flex bg-brand-dark relative overflow-hidden">
             {/* Background Ambience */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-                <div className="absolute bottom-[-10%] right-[10%] w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px]" />
+                <div className="absolute bottom-[-10%] right-[10%] w-[500px] h-[500px] bg-brand-primary/10 rounded-full blur-[120px]" />
             </div>
 
             <div className="w-full max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 p-6 lg:p-12 h-[calc(100vh-80px)]">
@@ -312,16 +312,16 @@ const BookingScreen: React.FC<Props> = ({ leadData }) => {
                 <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    className="overflow-y-auto pr-4 scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-transparent"
+                    className="overflow-y-auto pr-4 scrollbar-thin scrollbar-thumb-brand-gray/50 scrollbar-track-transparent"
                 >
                     <div className="space-y-8 pb-12">
                         {/* Score Card */}
-                        <div className="bg-slate-800/40 backdrop-blur-xl border border-white/10 p-6 rounded-3xl shadow-xl">
+                        <div className="bg-white/5 backdrop-blur-xl border border-white/10 p-6 rounded-3xl shadow-xl">
                             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mb-8">
                                 <div>
-                                    <h2 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">2026 AI Readiness Score</h2>
+                                    <h2 className="text-xs font-bold font-heading text-brand-gray uppercase tracking-widest mb-1">2026 AI Readiness Score</h2>
                                     <div className="flex items-baseline gap-3">
-                                        <span className="text-5xl font-black text-white tracking-tighter">{leadData.auditResult.readinessPercentage}%</span>
+                                        <span className="text-5xl font-black font-heading text-white tracking-tighter">{leadData.auditResult.readinessPercentage}%</span>
                                         <div className={`px-3 py-1 rounded-full ${levelBg} border border-white/5`}>
                                             <span className={`text-xs font-bold ${levelColor} uppercase tracking-wide`}>{leadData.auditResult.level}</span>
                                         </div>
@@ -336,7 +336,7 @@ const BookingScreen: React.FC<Props> = ({ leadData }) => {
                                         <>
                                             <button
                                                 onClick={handleDownloadPDF}
-                                                className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-lg hover:shadow-blue-500/25"
+                                                className="flex items-center gap-2 px-4 py-2 bg-brand-primary hover:bg-brand-calm text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-lg hover:shadow-brand-primary/25 font-heading"
                                             >
                                                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -416,22 +416,22 @@ const BookingScreen: React.FC<Props> = ({ leadData }) => {
                                 </ResponsiveContainer>
                             </div>
 
-                            <p className="text-slate-400 text-sm leading-relaxed border-t border-white/5 pt-4">
+                            <p className="text-brand-sky/80 text-sm leading-relaxed border-t border-white/5 pt-4 font-accent">
                                 {leadData.auditResult.recommendation}
                             </p>
                         </div>
 
                         {/* Report Content */}
-                        <div className="bg-slate-800/40 backdrop-blur-xl border border-white/10 p-6 rounded-3xl min-h-[400px]">
+                        <div className="bg-white/5 backdrop-blur-xl border border-white/10 p-6 rounded-3xl min-h-[400px]">
                             <div className="flex items-center gap-3 mb-6 border-b border-white/5 pb-4">
-                                <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center shadow-lg text-white">
+                                <div className="w-10 h-10 bg-gradient-to-br from-brand-primary to-brand-calm rounded-lg flex items-center justify-center shadow-lg text-white">
                                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                                     </svg>
                                 </div>
                                 <div>
-                                    <h3 className="text-lg font-bold text-white">Executive Strategy Blueprint</h3>
-                                    <p className="text-xs text-slate-400">AI-Generated Analysis</p>
+                                    <h3 className="text-lg font-bold font-heading text-white">Executive Strategy Blueprint</h3>
+                                    <p className="text-xs text-brand-gray font-accent">AI-Generated Analysis</p>
                                 </div>
                             </div>
 

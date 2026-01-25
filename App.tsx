@@ -85,19 +85,19 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-900 selection:bg-blue-500 selection:text-white font-sans text-white">
-      <header className="fixed top-0 w-full z-50 transition-all duration-300 bg-slate-900/80 backdrop-blur-md border-b border-white/10">
+    <div className="min-h-screen flex flex-col bg-brand-dark selection:bg-brand-primary selection:text-white font-sans text-white">
+      <header className="fixed top-0 w-full z-50 transition-all duration-300 bg-brand-dark/80 backdrop-blur-md border-b border-white/10">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <div className="flex items-center gap-3 cursor-pointer group" onClick={() => setState('landing')}>
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-blue-500/20 transition-transform group-hover:scale-105 border border-white/10">
+            <div className="w-10 h-10 bg-gradient-to-br from-brand-primary to-brand-calm rounded-xl flex items-center justify-center text-white shadow-lg shadow-brand-primary/20 transition-transform group-hover:scale-105 border border-white/10">
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
             </div>
-            <span className="text-xl font-bold text-white tracking-tight">2026 AI <span className="text-blue-400">Audit</span></span>
+            <span className="text-xl font-bold font-heading text-white tracking-tight">Heartbeat <span className="text-brand-primary">Audit</span></span>
           </div>
           <div className="hidden md:flex items-center gap-6">
-            <span className="text-sm text-blue-200/60 font-medium tracking-wide border border-white/10 px-3 py-1 rounded-full bg-white/5">v2.0 Beta</span>
+            <span className="text-sm text-brand-sky font-medium tracking-wide border border-white/10 px-3 py-1 rounded-full bg-white/5">v2.0 Beta</span>
           </div>
         </div>
       </header>
@@ -116,9 +116,9 @@ const App: React.FC = () => {
         )}
       </main>
 
-      <footer className="bg-slate-900 py-12 border-t border-white/5 relative z-10">
+      <footer className="bg-brand-dark py-12 border-t border-white/5 relative z-10">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <p className="text-slate-600 text-sm">© 2026 AI Readiness Protocol. All rights reserved.</p>
+          <p className="text-brand-gray text-sm">© 2026 AI Readiness Protocol. All rights reserved.</p>
         </div>
       </footer>
     </div>
