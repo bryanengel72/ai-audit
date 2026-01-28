@@ -177,4 +177,4 @@ export const QUESTIONS: Question[] = [
   }
 ];
 
-export const CAL_COM_LINK = "https://cal.com/hbosb/ai-readiness-assessment-complimentary";
+export const CAL_COM_LINK = "https://cal.com/hbosb/heartbeat-audit";

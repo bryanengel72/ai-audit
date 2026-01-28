@@ -22,8 +22,8 @@ const BookingScreen: React.FC<Props> = ({ leadData }) => {
 
     useEffect(() => {
         (async function () {
-            const cal = await getCalApi({});
-            cal("ui", { "styles": { "branding": { "brandColor": "#2563eb" } }, "hideEventTypeDetails": false, "layout": "month_view" });
+            const cal = await getCalApi({ namespace: "heartbeat-audit" });
+            cal("ui", { "styles": { "branding": { "brandColor": "#4a91c4" } }, "hideEventTypeDetails": false, "layout": "month_view" });
         })();
     }, []);
 
@@ -50,7 +50,7 @@ const BookingScreen: React.FC<Props> = ({ leadData }) => {
 
             // AUTO-SEND: Notify Admin
             sendReportEmail({
-                email: 'thebryanengel@gmail.com',
+                email: 'info@heartbeatofsouthbay.com',
                 name: leadData.name,
                 businessName: leadData.businessName,
                 report: report,
@@ -480,12 +480,15 @@ const BookingScreen: React.FC<Props> = ({ leadData }) => {
 
                     <div className="bg-white rounded-3xl overflow-hidden shadow-2xl h-full relative border border-white/10">
                         <Cal
+                            namespace="heartbeat-audit"
                             calLink={CAL_COM_LINK.replace("https://cal.com/", "")}
                             style={{ width: "100%", height: "100%", overflow: "scroll" }}
                             config={{
                                 name: leadData.name,
                                 email: leadData.email,
-                                notes: `Business: ${leadData.businessName} | Readiness: ${leadData.auditResult.readinessPercentage}%`
+                                notes: `Business: ${leadData.businessName} | Readiness: ${leadData.auditResult.readinessPercentage}%`,
+                                layout: "month_view",
+                                useSlotsViewOnSmallScreen: true
                             }}
                         />
                     </div>
