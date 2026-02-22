@@ -117,7 +117,7 @@ const LandingPage: React.FC<Props> = ({ onStart }) => {
                 <input
                   required
                   type="text"
-                  placeholder="John Doe"
+                  placeholder="Your full name"
                   className="relative w-full px-5 py-4 bg-slate-900 border border-white/10 rounded-xl focus:outline-none text-white placeholder-slate-600 font-medium transition-all"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -132,7 +132,7 @@ const LandingPage: React.FC<Props> = ({ onStart }) => {
                 <input
                   required
                   type="email"
-                  placeholder="john@company.com"
+                  placeholder="Your best business email"
                   className="relative w-full px-5 py-4 bg-slate-900 border border-white/10 rounded-xl focus:outline-none text-white placeholder-slate-600 font-medium transition-all"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -147,7 +147,7 @@ const LandingPage: React.FC<Props> = ({ onStart }) => {
                 <input
                   required
                   type="text"
-                  placeholder="Acme Inc."
+                  placeholder="Your business name"
                   className="relative w-full px-5 py-4 bg-slate-900 border border-white/10 rounded-xl focus:outline-none text-white placeholder-slate-600 font-medium transition-all"
                   value={formData.businessName}
                   onChange={(e) => setFormData({ ...formData, businessName: e.target.value })}
