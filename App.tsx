@@ -6,6 +6,7 @@ import AuditForm from './components/AuditForm';
 import BookingScreen from './components/BookingScreen';
 import ProcessingView from './components/ProcessingView';
 import { submitToDatabase } from './services/storageService';
+import { submitLeadDataToWebhook, submitLeadInfoToWebhook } from './services/webhookService';
 
 type AppState = 'landing' | 'form' | 'processing' | 'booking';
 
@@ -59,6 +60,7 @@ const App: React.FC = () => {
   const handleStartAudit = (info: { name: string; email: string; businessName: string }) => {
     setLeadInfo(info);
     setState('form');
+    void submitLeadInfoToWebhook(info);
   };
 
   const handleFormComplete = async (finalResponses: UserResponse[]) => {
@@ -76,6 +78,8 @@ const App: React.FC = () => {
     };
 
     setFinalLeadData(completeLeadData);
+
+    void submitLeadDataToWebhook(completeLeadData);
 
     // 1. Submit to Supabase (fire and forget / robust handling inside service)
     await submitToDatabase(completeLeadData);
