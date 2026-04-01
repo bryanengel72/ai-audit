@@ -4,7 +4,8 @@ export enum Pillar {
   DATA = 'Data & Systems',
   PROCESSES = 'Processes & Operations',
   PEOPLE = 'People & Culture',
-  TOOLS = 'Tools & Security'
+  TOOLS = 'Tools & Security',
+  LEAD_HANDLING = 'Lead Revenue & Handling'
 }
 
 export type QuestionType = 'scored' | 'text' | 'multiselect' | 'select';

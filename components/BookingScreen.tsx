@@ -102,7 +102,7 @@ const BookingScreen: React.FC<Props> = ({ leadData }) => {
         // Header
         doc.setFontSize(22);
         doc.setTextColor(37, 99, 235); // Blue 600
-        doc.text('2026 AI Readiness Audit', margin, y);
+        doc.text('2026 AI Revenue Readiness Audit', margin, y);
         y += 10;
 
         doc.setFontSize(12);
@@ -122,7 +122,7 @@ const BookingScreen: React.FC<Props> = ({ leadData }) => {
 
         doc.setFontSize(12);
         doc.setTextColor(71, 85, 105); // Slate 600
-        doc.text(`Readiness Level: ${leadData.auditResult.level}`, margin + 5, y + 18);
+        doc.text(`Revenue Readiness Level: ${leadData.auditResult.level}`, margin + 5, y + 18);
         y += 35;
 
         // Content Parsing
@@ -175,7 +175,7 @@ const BookingScreen: React.FC<Props> = ({ leadData }) => {
             }
         });
 
-        doc.save(`AI_Readiness_Audit_${leadData.businessName.replace(/\s+/g, '_')}.pdf`);
+        doc.save(`AI_Revenue_Audit_${leadData.businessName.replace(/\s+/g, '_')}.pdf`);
     };
 
     const chartData: { name: string; score: number }[] = Object.entries(leadData.auditResult.pillarScores).map(([name, score]) => ({
@@ -319,7 +319,7 @@ const BookingScreen: React.FC<Props> = ({ leadData }) => {
                         <div className="bg-white/5 backdrop-blur-xl border border-white/10 p-6 rounded-3xl shadow-xl">
                             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mb-8">
                                 <div>
-                                    <h2 className="text-xs font-bold font-heading text-brand-gray uppercase tracking-widest mb-1">2026 AI Readiness Score</h2>
+                                    <h2 className="text-xs font-bold font-heading text-brand-gray uppercase tracking-widest mb-1">2026 Revenue Readiness Score</h2>
                                     <div className="flex items-baseline gap-3">
                                         <span className="text-5xl font-black font-heading text-white tracking-tighter">{leadData.auditResult.readinessPercentage}%</span>
                                         <div className={`px-3 py-1 rounded-full ${levelBg} border border-white/5`}>
@@ -394,7 +394,7 @@ const BookingScreen: React.FC<Props> = ({ leadData }) => {
                                 <ResponsiveContainer width="100%" height="100%">
                                     <BarChart data={chartData} layout="vertical" margin={{ left: 10, right: 30, bottom: 0, top: 0 }}>
                                         <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="#334155" />
-                                        <XAxis type="number" domain={[0, 10]} hide />
+                                        <XAxis type="number" domain={[0, 'auto']} hide />
                                         <YAxis
                                             dataKey="name"
                                             type="category"
@@ -409,7 +409,7 @@ const BookingScreen: React.FC<Props> = ({ leadData }) => {
                                         />
                                         <Bar dataKey="score" radius={[0, 4, 4, 0]} barSize={20} animationDuration={1000}>
                                             {chartData.map((entry, index) => (
-                                                <Cell key={`cell-${index}`} fill={(entry.score as number) > 7 ? '#10b981' : (entry.score as number) > 4 ? '#f59e0b' : '#3b82f6'} />
+                                                <Cell key={`cell-${index}`} fill={(entry.score as number) > 15 ? '#10b981' : (entry.score as number) > 8 ? '#f59e0b' : '#3b82f6'} />
                                             ))}
                                         </Bar>
                                     </BarChart>
@@ -486,7 +486,7 @@ const BookingScreen: React.FC<Props> = ({ leadData }) => {
                             config={{
                                 name: leadData.name,
                                 email: leadData.email,
-                                notes: `Business: ${leadData.businessName} | Readiness: ${leadData.auditResult.readinessPercentage}%`,
+                                notes: `Business: ${leadData.businessName} | Revenue Readiness: ${leadData.auditResult.readinessPercentage}%`,
                                 layout: "month_view",
                                 useSlotsViewOnSmallScreen: true
                             }}

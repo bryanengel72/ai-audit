@@ -19,14 +19,13 @@ const App: React.FC = () => {
   const [finalLeadData, setFinalLeadData] = useState<LeadData | null>(null);
 
   const calculateResult = (userResponses: UserResponse[]): AuditResult => {
-    // Only calculate score for 'scored' type questions
+    // Calculate score for 'scored' and 'select' type questions (14 questions, max 70 points)
     const scoredResponses = userResponses.filter(r => {
       const q = QUESTIONS.find(question => question.id === r.questionId);
-      return q?.type === 'scored';
+      return q?.type === 'scored' || q?.type === 'select';
     });
 
     const totalScore = scoredResponses.reduce((sum, r) => sum + (r.selectedOption?.score || 0), 0);
-    // Max score is 5 per scored question. We have 8 scored questions (Q6-Q13) = 40 max
     const maxPossible = scoredResponses.length * 5;
     const readinessPercentage = Math.round((totalScore / maxPossible) * 100);
 
@@ -43,10 +42,10 @@ const App: React.FC = () => {
     else if (readinessPercentage >= 40) level = 'Medium';
 
     const recommendation = level === 'High'
-      ? "Strong foundation. You're ready for end-to-end Autonomous Ops."
+      ? "Strong revenue foundation. You're ready for a full AI Revenue System."
       : level === 'Medium'
-        ? "Systems present but leaky. Start with 2 core automated workflows."
-        : "Initial phase. Focus on clean data and documented SOPs first.";
+        ? "Revenue gaps identified. Start with automated lead response and follow-up sequences."
+        : "High revenue potential at risk. Prioritise immediate lead handling and response automation.";
 
     return {
       totalScore,
