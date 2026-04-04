@@ -312,7 +312,7 @@ const BookingScreen: React.FC<Props> = ({ leadData }) => {
                 <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    className="lg:overflow-y-auto lg:pr-4 scrollbar-thin scrollbar-thumb-brand-gray/50 scrollbar-track-transparent h-auto"
+                    className="lg:overflow-y-auto lg:pr-4 lg:h-full scrollbar-thin scrollbar-thumb-brand-gray/50 scrollbar-track-transparent"
                 >
                     <div className="space-y-8 pb-12">
                         {/* Score Card */}
@@ -478,7 +478,7 @@ const BookingScreen: React.FC<Props> = ({ leadData }) => {
                         <span className="text-xs text-blue-400 font-medium uppercase tracking-wider animate-pulse">Required Next Step</span>
                     </div>
 
-                    <div className="bg-white rounded-3xl overflow-hidden shadow-2xl h-full relative border border-white/10">
+                    <div className="bg-white rounded-3xl overflow-hidden shadow-2xl flex-1 relative border border-white/10">
                         <Cal
                             namespace="heartbeat-audit"
                             calLink={CAL_COM_LINK.replace("https://cal.com/", "")}
