@@ -14,7 +14,7 @@ import { DEMO_LEAD_DATA } from './demoData';
 
 const App: React.FC = () => {
   const [state, setState] = useState<AppState>('landing');
-  const [leadInfo, setLeadInfo] = useState({ name: '', email: '', businessName: '' });
+  const [leadInfo, setLeadInfo] = useState({ name: '', email: '', phone: '' });
   const [auditResult, setAuditResult] = useState<AuditResult | null>(null);
   const [finalLeadData, setFinalLeadData] = useState<LeadData | null>(null);
 
@@ -56,7 +56,7 @@ const App: React.FC = () => {
     };
   };
 
-  const handleStartAudit = (info: { name: string; email: string; businessName: string }) => {
+  const handleStartAudit = (info: { name: string; email: string; phone: string }) => {
     setLeadInfo(info);
     setState('form');
     void submitLeadInfoToWebhook(info);
@@ -67,11 +67,16 @@ const App: React.FC = () => {
     const result = calculateResult(finalResponses);
     setAuditResult(result);
 
+    // Pull company name from the first audit question's text response
+    const companyNameResponse = finalResponses.find(r => r.questionId === 'company_name');
+    const businessName = companyNameResponse?.textResponse?.trim() || '';
+
     // Prepare lead data
     const completeLeadData: LeadData = {
       name: leadInfo.name,
       email: leadInfo.email,
-      businessName: leadInfo.businessName,
+      phone: leadInfo.phone,
+      businessName,
       responses: finalResponses,
       auditResult: result
     };

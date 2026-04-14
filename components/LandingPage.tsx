@@ -3,15 +3,15 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
 interface Props {
-  onStart: (info: { name: string; email: string; businessName: string }) => void;
+  onStart: (info: { name: string; email: string; phone: string }) => void;
 }
 
 const LandingPage: React.FC<Props> = ({ onStart }) => {
-  const [formData, setFormData] = useState({ name: '', email: '', businessName: '' });
+  const [formData, setFormData] = useState({ name: '', email: '', phone: '' });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (formData.name && formData.email && formData.businessName) {
+    if (formData.name && formData.email && formData.phone) {
       onStart(formData);
     }
   };
@@ -141,16 +141,16 @@ const LandingPage: React.FC<Props> = ({ onStart }) => {
             </div>
 
             <div className="space-y-2">
-              <label className="text-xs font-bold text-blue-300 uppercase tracking-wide ml-1">Company</label>
+              <label className="text-xs font-bold text-blue-300 uppercase tracking-wide ml-1">Phone Number</label>
               <div className="group relative">
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-xl opacity-0 group-focus-within:opacity-100 blur transition duration-500"></div>
                 <input
                   required
-                  type="text"
-                  placeholder="Your business name"
+                  type="tel"
+                  placeholder="+1 (555) 000-0000"
                   className="relative w-full px-5 py-4 bg-slate-900 border border-white/10 rounded-xl focus:outline-none text-white placeholder-slate-600 font-medium transition-all"
-                  value={formData.businessName}
-                  onChange={(e) => setFormData({ ...formData, businessName: e.target.value })}
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                 />
               </div>
             </div>

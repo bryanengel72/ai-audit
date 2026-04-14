@@ -43,6 +43,7 @@ export interface AuditResult {
 export interface LeadData {
   name: string;
   email: string;
+  phone: string;
   businessName: string;
   responses: UserResponse[];
   auditResult: AuditResult;

@@ -3,6 +3,13 @@ import { Pillar, Question } from './types';
 
 export const QUESTIONS: Question[] = [
   {
+    id: 'company_name',
+    pillar: Pillar.STRATEGY,
+    type: 'text',
+    question: "What's the name of your company?",
+    placeholder: "e.g., Acme Corporation"
+  },
+  {
     id: 'q1',
     pillar: Pillar.STRATEGY,
     type: 'text',
@@ -12,7 +19,7 @@ export const QUESTIONS: Question[] = [
   {
     id: 'q2',
     pillar: Pillar.PEOPLE,
-    type: 'select',
+    type: 'scored',
     question: "Who's involved day-to-day, and how comfortable are they with new tools?",
     options: [
       { text: "Solo (just me)", score: 5 },
@@ -24,7 +31,7 @@ export const QUESTIONS: Question[] = [
   {
     id: 'q3',
     pillar: Pillar.LEAD_HANDLING,
-    type: 'select',
+    type: 'scored',
     question: "Approximately how many new inquiries or leads does your business receive each month?",
     options: [
       { text: "0–10 leads", score: 2 },
@@ -36,7 +43,7 @@ export const QUESTIONS: Question[] = [
   {
     id: 'q4',
     pillar: Pillar.DATA,
-    type: 'select',
+    type: 'scored',
     question: "Where does your customer and lead data primarily live today?",
     options: [
       { text: "Inbox/DMs (email, Instagram, etc.)", score: 1 },
@@ -156,7 +163,7 @@ export const QUESTIONS: Question[] = [
   {
     id: 'q14',
     pillar: Pillar.STRATEGY,
-    type: 'select',
+    type: 'scored',
     question: "If every lead was responded to immediately and followed up consistently, what impact would that have on your business?",
     options: [
       { text: "Small improvement", score: 2 },
@@ -179,7 +186,7 @@ export const QUESTIONS: Question[] = [
   {
     id: 'q16',
     pillar: Pillar.STRATEGY,
-    type: 'select',
+    type: 'scored',
     question: "Would you like a breakdown of what systems your business needs and how to implement them?",
     options: [
       { text: "Yes — show me my recommendations", score: 5 },

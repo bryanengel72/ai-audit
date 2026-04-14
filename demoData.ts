@@ -3,6 +3,7 @@ import { LeadData, Pillar } from './types';
 export const DEMO_LEAD_DATA: LeadData = {
     name: "Alex Sterling",
     email: "alex@acmecorp.com",
+    phone: "+1 (555) 123-4567",
     businessName: "Acme Corp",
     responses: [
         // q1 — Business description (text, no score)

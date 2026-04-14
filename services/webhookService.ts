@@ -4,7 +4,7 @@ import { QUESTIONS } from '../constants';
 type LeadInfo = {
   name: string;
   email: string;
-  businessName: string;
+  phone: string;
 };
 
 const DEFAULT_WEBHOOK_URL =
@@ -84,6 +84,7 @@ export const submitLeadDataToWebhook = async (leadData: LeadData): Promise<boole
     // Top-level fields for easy n8n mapping
     name: leadData.name,
     email: leadData.email,
+    phone: leadData.phone,
     businessName: leadData.businessName,
     score: leadData.auditResult.readinessPercentage,
     level: leadData.auditResult.level,
