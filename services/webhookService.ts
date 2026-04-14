@@ -8,7 +8,7 @@ type LeadInfo = {
 };
 
 const DEFAULT_WEBHOOK_URL =
-  'https://n8n.srv1035849.hstgr.cloud/webhook/ec614bd1-1e17-49c2-927f-9b93086fc8d8';
+  'https://n8n.srv1035849.hstgr.cloud/webhook/7aec9fc3-a20d-446d-91b4-531f1687495e';
 
 const getWebhookUrl = (): string => {
   const envUrl = import.meta.env.VITE_N8N_WEBHOOK_URL;
